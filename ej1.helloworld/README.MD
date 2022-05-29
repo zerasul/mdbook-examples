@@ -1,3 +1,3 @@
-# My Awesome Game
+# Example 1: Hello World
 
-This is My Awesome 16 Bit Cartridge game for mega Drive
+This example shows the message Hello Sega!!! in the screen.
