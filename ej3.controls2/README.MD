@@ -1,3 +1,3 @@
-# My Awesome Game
+# Example 2: synchronous Controls
 
-This is My Awesome 16 Bit Cartridge game for mega Drive
+This example test all the buttons (based on a 3 button controller) of the pad. It uses the asynchronous controls.
