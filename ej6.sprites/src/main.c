@@ -25,11 +25,11 @@ int elliPrio=FALSE;
 void readInput();
 void asyncReadInput(u16,u16,u16);
 
-char buffer[20];
-char buffer2[20];
+
 
 int main()
 {
+
     JOY_init();
     JOY_setEventHandler(asyncReadInput);
     SPR_init();
@@ -40,11 +40,10 @@ int main()
     index+=bg_b.tileset->numTile;
     VDP_drawImageEx(BG_A, &bg_a, TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,index),0,0,TRUE,CPU);
     index+=bg_a.tileset->numTile;
-    sha = SPR_addSprite(&shaSprt,sha_x,sha_y,TILE_ATTR_FULL(PAL2,TRUE,FALSE,FALSE,index));
+    sha = SPR_addSprite(&shaSprt,sha_x,sha_y,TILE_ATTR(PAL2,TRUE,FALSE,FALSE));
     VDP_setPalette(PAL2,shaSprt.palette->data);
-    elli = SPR_addSprite(&elliSprt,45, 155,TILE_ATTR_FULL(PAL3,FALSE,FALSE,FALSE,index));
+    elli = SPR_addSprite(&elliSprt,45, 155,TILE_ATTR(PAL3,FALSE,FALSE,FALSE));
     VDP_setPalette(PAL3,elliSprt.palette->data);
-    SPR_setAnimAndFrame(sha,2,1);
     SPR_setAnim(sha,SHA_STAY);
     SPR_setAnim(elli,4);
     while(1)
@@ -53,10 +52,6 @@ int main()
         readInput();
         SPR_setPosition(sha,sha_x,sha_y);
         SPR_update();
-        sprintf(buffer,"Sha Priority: %d",shaPrio);
-        sprintf(buffer2,"Elli Priority: %d", elliPrio);
-        VDP_drawText(buffer,4,2);
-        VDP_drawText(buffer2,4,3);
         //For versions prior to SGDK 1.60 use VDP_waitVSync instead.
         SYS_doVBlankProcess();
     }
@@ -94,12 +89,16 @@ void asyncReadInput(u16 joy,u16 changed,u16 state){
 
     if(joy == JOY_1){
         if(changed & state &  BUTTON_A){
-                 shaPrio=(shaPrio==TRUE)? FALSE:TRUE;
-                 SPR_setPriority(sha,shaPrio);
+                 shaPrio=TRUE;
+                 elliPrio=FALSE;
+                 SPR_setZ(sha,shaPrio);
+                 SPR_setZ(elli,elliPrio);
         }
         if(changed & state &  BUTTON_B){
-                 elliPrio=(elliPrio==TRUE)? FALSE:TRUE;
-                 SPR_setPriority(elli,elliPrio);
+                 shaPrio=FALSE;
+                 elliPrio=TRUE;
+                 SPR_setZ(sha,shaPrio);
+                 SPR_setZ(elli,elliPrio);
         }
     }
 }
