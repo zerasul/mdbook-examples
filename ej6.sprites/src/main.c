@@ -42,7 +42,7 @@ int main()
     index+=bg_a.tileset->numTile;
     sha = SPR_addSprite(&shaSprt,sha_x,sha_y,TILE_ATTR_FULL(PAL2,TRUE,FALSE,FALSE,index));
     VDP_setPalette(PAL2,shaSprt.palette->data);
-    elli = SPR_addSprite(&elliSprt,45, 155,TILE_ATTR_FULL(PAL3,TRUE,FALSE,FALSE,index));
+    elli = SPR_addSprite(&elliSprt,45, 155,TILE_ATTR_FULL(PAL3,FALSE,FALSE,FALSE,index));
     VDP_setPalette(PAL3,elliSprt.palette->data);
     SPR_setAnimAndFrame(sha,2,1);
     SPR_setAnim(sha,SHA_STAY);
