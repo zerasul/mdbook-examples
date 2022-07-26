@@ -19,6 +19,13 @@ Sprite * elli;
 u16 sha_x=15;
 u16 sha_y=125;
 
+typedef struct {
+    s8 x;
+    s8 y;
+    s8 w;
+    s8 h;
+}BoxCollider;
+
 int shaPrio=TRUE;
 int elliPrio=FALSE;
 
@@ -110,20 +117,27 @@ void asyncReadInput(u16 joy,u16 changed,u16 state){
 
 int checkCollision(Sprite* sprt1, Sprite* sprt2){
 
-    BoxCollision collision1 =
-        sprt1->frame->collision->hit.box;
-    BoxCollision collision2 = 
-        sprt2->frame->collision->hit.box;
-    
-    s8 box1_x1 = collision1.x;
-    s8 box1_y1 = collision1.y;
-    s8 box1_x2 = collision1.x+collision1.w;
-    s8 box1_y2 = collision1.y+collision1.h;
+    BoxCollider sprt1Collider;
+    sprt1Collider.x=sprt1->x+4;
+    sprt1Collider.y=sprt1->y+4;
+    sprt1Collider.w=20;
+    sprt1Collider.h=26;
 
-    s8 box2_x1 = collision2.x;
-    s8 box2_y1 = collision2.y;
-    s8 box2_x2 = collision2.x+collision2.w;
-    s8 box2_y2 = collision2.y+collision2.h;
+    BoxCollider sprt2Collider;
+    sprt2Collider.x=sprt2->x+7;
+    sprt2Collider.y=sprt2->y+6;
+    sprt2Collider.w=18;
+    sprt2Collider.h=21;
+    
+    s8 box1_x1 = sprt1Collider.x;
+    s8 box1_y1 = sprt1Collider.y;
+    s8 box1_x2 = sprt1Collider.x+sprt1Collider.w;
+    s8 box1_y2 = sprt1Collider.y+sprt1Collider.h;
+
+    s8 box2_x1 = sprt2Collider.x;
+    s8 box2_y1 = sprt2Collider.y;
+    s8 box2_x2 = sprt2Collider.x+sprt2Collider.w;
+    s8 box2_y2 = sprt2Collider.y+sprt2Collider.h;
 
     if ((box1_x1 <= box2_x2) &&
             (box1_x2 >= box2_x1) &&
