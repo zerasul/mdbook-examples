@@ -44,7 +44,7 @@ int main()
     index+=bg_color1.tileset->numTile;
     zera_x=5;
     zera_y=134;
-    zera = SPR_addSprite(&zera_spr,zera_x,zera_y,TILE_ATTR(PAL1,TRUE,FALSE,FALSE));
+    zera = SPR_addSprite(&zera_spr,zera_x,zera_y,TILE_ATTR(PAL1,FALSE,FALSE,FALSE));
     VDP_setPalette(PAL1,zera_spr.palette->data);
     SPR_setAnim(zera,ZERA_IDLE);
     fire_x=321;
