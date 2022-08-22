@@ -29,13 +29,11 @@ u16 fire_y;
 
 void drawPriorityMap(Image *);
 void handleInput();
-void input_callback(u16 ,u16 ,u16 );
 void handle_fire();
 
 int main()
 {
     SPR_init();
-    JOY_setEventHandler(input_callback);
     u16 index=TILE_USERINDEX;
     drawPriorityMap(&bg_prio);
     index+=bg_prio.tileset->numTile;
@@ -55,7 +53,6 @@ int main()
     while(1)
     {
         handleInput();
-        handle_fire();
         SPR_update();
         SPR_setPosition(zera,zera_x,zera_y);
         //For versions prior to SGDK 1.60 use VDP_waitVSync instead.
@@ -100,23 +97,5 @@ void handleInput(){
 
     if(!(value & BUTTON_LEFT) && !(value & BUTTON_RIGHT)){
         SPR_setAnim(zera,ZERA_IDLE);
-    }
-}
-
-void input_callback(u16 joy,u16 changed,u16 state){
-    if (joy == JOY_1){
-        if(changed & state & BUTTON_B){
-            if(fire_x>MAX_WITH){
-                fire_x = zera_x+16;
-                fire_y = zera_y-8;
-            }
-        }
-    }
-}
-
-void handle_fire(){
-    if(fire_x<MAX_WITH){
-        fire_x += FIRE_SPEED;
-        SPR_setPosition(fire,fire_x,fire_y);
     }
 }
