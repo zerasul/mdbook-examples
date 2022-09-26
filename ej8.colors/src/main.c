@@ -34,7 +34,8 @@ void handle_fire();
 int main()
 {
     SPR_init();
-    u16 index=TILE_USERINDEX;
+    //Versions prior to SGDK 1.80 use TILE_USERINDEX
+    u16 index=TILE_USER_INDEX;
     drawPriorityMap(&bg_prio);
     index+=bg_prio.tileset->numTile;
     VDP_drawImageEx(BG_B, &bg_color1,
@@ -43,12 +44,8 @@ int main()
     zera_x=5;
     zera_y=134;
     zera = SPR_addSprite(&zera_spr,zera_x,zera_y,TILE_ATTR(PAL1,FALSE,FALSE,FALSE));
-    VDP_setPalette(PAL1,zera_spr.palette->data);
+    PAL_setPalette(PAL1,zera_spr.palette->data,DMA);
     SPR_setAnim(zera,ZERA_IDLE);
-    fire_x=321;
-    fire_y=20;
-    fire = SPR_addSprite(&fire_spr,fire_x,fire_y, TILE_ATTR(PAL3,TRUE,FALSE,FALSE));
-    VDP_setPalette(PAL3,fire_spr.palette->data);
     VDP_setHilightShadow(1);
     while(1)
     {

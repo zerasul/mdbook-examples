@@ -12,7 +12,8 @@ int main()
     {
         
         VDP_setScreenWidth320();
-        u16 ind = TILE_USERINDEX;
+        // Versions prior to SGDK 1.80 use TILE_USERINDEX
+        u16 ind = TILE_USER_INDEX;
         VDP_drawImageEx(BG_B,&bg_a,TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),0,0,TRUE,CPU);
         ind+=bg_a.tileset->numTile;
         VDP_drawImageEx(BG_A,&bg_b,TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,ind),0,0,TRUE,CPU);

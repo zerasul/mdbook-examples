@@ -35,15 +35,16 @@ int main()
     SPR_init();
     
     VDP_setScreenWidth320();
-    u16 index = TILE_USERINDEX;
+    //versions prior to SGDK 1.80 use TILE_USERINDEX
+    u16 index = TILE_USER_INDEX;
     VDP_drawImageEx(BG_B, &bg_b, TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,index),0,0,TRUE,CPU);
     index+=bg_b.tileset->numTile;
     VDP_drawImageEx(BG_A, &bg_a, TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,index),0,0,TRUE,CPU);
     index+=bg_a.tileset->numTile;
     sha = SPR_addSprite(&shaSprt,sha_x,sha_y,TILE_ATTR(PAL2,TRUE,FALSE,FALSE));
-    VDP_setPalette(PAL2,shaSprt.palette->data);
+    PAL_setPalette(PAL2,shaSprt.palette->data, DMA);
     elli = SPR_addSprite(&elliSprt,45, 155,TILE_ATTR(PAL3,FALSE,FALSE,FALSE));
-    VDP_setPalette(PAL3,elliSprt.palette->data);
+    PAL_setPalette(PAL3,elliSprt.palette->data, DMA);
     SPR_setAnim(sha,SHA_STAY);
     SPR_setAnim(elli,4);
     while(1)
