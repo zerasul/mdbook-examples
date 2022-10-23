@@ -13,12 +13,9 @@ int main()
     u16 ind = TILE_USER_INDEX;
     VDP_loadTileSet(&mapabosque, ind, DMA);
     PAL_setPalette(PAL0,palbosque.data,DMA);
-    VDP_setTileMapEx(BG_B,&map1,
-    TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),
-    0,0,0,0,map1.w,map1.h,DMA);
-    VDP_setTileMapEx(BG_A,&map1b,
-    TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),
-    0,0,0,0,map1b.w,map1b.h,DMA);
+    VDP_setTileMap(BG_B,&map1,0,0,map1.w,map1.h,DMA);
+    VDP_setTileMap(BG_A,&map1b,
+    0,0,map1b.w,map1b.h,DMA);
     while(1)
     {
         //For versions prior to SGDK 1.60 use VDP_waitVSync instead.

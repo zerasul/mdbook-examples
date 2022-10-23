@@ -9,6 +9,9 @@
 
 #include "map1.h"
 
+u16 tileMap1[1120];
+u16 tileMap1b[1120];
+
 int main()
 {
     u16 ind = TILE_USER_INDEX;
@@ -20,11 +23,14 @@ int main()
         {
         for (j = 0; j < 28; j++)
          {
-            
-            VDP_setTileMapXY(BG_A, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, (ind-1) + map1b[(i) + 40 * j]), i, j);
-            VDP_setTileMapXY(BG_B, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, (ind-1) + map1[(i) + 40 * j]), i, j);
+            tileMap1[(i) + 40 * j]=TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, (ind-1) + map1b[(i) + 40 * j]);
+            tileMap1b[(i) + 40 * j]=TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, (ind-1) + map1[(i) + 40 * j]);
          }
     }
+    
+    VDP_setTileMapDataRect(BG_A,tileMap1,0,0,40,28,40,CPU);
+    VDP_setTileMapDataRect(BG_B,tileMap1b,0,0,40,28,40,CPU);
+    
 
     while(1)
     {
