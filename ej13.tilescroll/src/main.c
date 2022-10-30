@@ -34,9 +34,9 @@ int main()
     while(1)
     {
         for(i=0;i<20;i++){
-            scrollVector[i]-=5;
+            scrollVector[i]-=2;
         }
-        VDP_setVerticalScrollTile(BG_A,0,scrollVector,20,CPU);
+        VDP_setVerticalScrollTile(BG_A,0,scrollVector,20,DMA);
         SYS_doVBlankProcess();
     }
     return (0);

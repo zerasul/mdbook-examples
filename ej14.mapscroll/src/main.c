@@ -18,10 +18,10 @@ struct{
     u16 offset;
 }player;
 
-u16 xord;
-u16 countpixel;
-u16 col_update;
+
 u16 ind;
+
+Map * map;
 
 
 void inputHandle();
@@ -31,13 +31,15 @@ int main()
     player.x=20;
     player.y=135;
     player.offset=0;
-    countpixel=0;
-    xord=0;
+    
     SPR_init();
     ind = TILE_USER_INDEX;
     VDP_drawImageEx(BG_B,&sky,TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),0,0,TRUE,CPU);
     ind+= sky.tileset->numTile;
-    VDP_drawImageEx(BG_A,&map1,TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,ind),0,0,TRUE,CPU);
+    PAL_setPalette(PAL1,pltmap.data,DMA);
+    VDP_loadTileSet(&map_tileset,ind,DMA);
+    map=MAP_create(&map1,BG_A,TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,ind));
+
     player.elliSprt=SPR_addSprite(&elli,20,135,TILE_ATTR(PAL2,FALSE,FALSE,FALSE));
     SPR_setAnim(player.elliSprt,IDLE);
     PAL_setPalette(PAL2,elli.palette->data,CPU);
@@ -60,13 +62,11 @@ void inputHandle(){
     if(value & BUTTON_RIGHT){
         SPR_setAnim(player.elliSprt, RIGTH);
          if(player.x>220){
-            xord=1;
+           player.offset+=2;
         }else{
             player.x+=2;
-            xord=0;
         }   
     }else{
-        xord=0;
         if(value & BUTTON_LEFT){
             SPR_setAnim(player.elliSprt, LEFT);
             
@@ -82,17 +82,7 @@ void inputHandle(){
 }
 
 void updatePhisics(){
+    if(player.offset>320) player.offset=0;
     SPR_setPosition(player.elliSprt,player.x,player.y);
-    if(xord>0){
-        player.offset+=2;
-        countpixel++;
-        if(countpixel>7) countpixel=0;
-    }
-
-    if(player.offset>1023) player.offset=0;
-    if(countpixel==0){
-        col_update=(((player.offset+320)>>3)&79);
-        VDP_setMapEx(BG_A,map1.tilemap,TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,ind),col_update,0,col_update,0,1,28);
-    }
-    VDP_setHorizontalScroll(BG_A,-player.offset);
+    MAP_scrollTo(map,player.offset,0);
 }
