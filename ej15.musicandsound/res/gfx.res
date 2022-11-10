@@ -1,0 +1,1 @@
+IMAGE background "gfx/back.png" NONE
