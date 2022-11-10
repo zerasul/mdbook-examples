@@ -22,10 +22,14 @@ int main()
     sounds[2]=sound3;
     u16 ind = TILE_USER_INDEX;
     VDP_drawImageEx(BG_B,&background,TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),0,0,TRUE,DMA);
+    ind+=background.tileset->numTile;
+    VDP_loadTileSet(&numbers,ind, CPU);
+    PAL_setPalette(PAL2,&numbersPal, DMA);
     JOY_setEventHandler(inputHandler);
     
     while(1)
     {
+        VDP_setTileMapXY(BG_A,TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,ind+(sound-1)),19,17);
         //For versions prior to SGDK 1.60 use VDP_waitVSync instead.
         SYS_doVBlankProcess();
     }
@@ -61,8 +65,9 @@ void inputHandler(u16 joy, u16 changed, u16 state){
                         if(changed & state & BUTTON_RIGHT){
                             sound++;
                             if(sound==4) sound=1;
-                        }else if (changed & state & BUTTON_RIGHT)
+                        }else if (changed & state & BUTTON_LEFT)
                         {
+                            sound--;
                             if(sound==0) sound=3;
                         }
                     }
