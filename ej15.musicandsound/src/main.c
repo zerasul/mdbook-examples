@@ -60,7 +60,7 @@ void inputHandler(u16 joy, u16 changed, u16 state){
                 }else{
                     if(changed & state & BUTTON_START){
                         XGM_stopPlay();
-                        XGM_stopPlayPCM(3);
+                        XGM_stopPlayPCM(SOUND_PCM_CH4);
                     }else{
                         if(changed & state & BUTTON_RIGHT){
                             sound++;
