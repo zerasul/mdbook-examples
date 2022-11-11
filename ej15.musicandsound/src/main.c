@@ -23,8 +23,8 @@ int main()
     u16 ind = TILE_USER_INDEX;
     VDP_drawImageEx(BG_B,&background,TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),0,0,TRUE,DMA);
     ind+=background.tileset->numTile;
-    VDP_loadTileSet(&numbers,ind, CPU);
-    PAL_setPalette(PAL2,&numbersPal, DMA);
+    VDP_loadTileSet(&numbers,ind, DMA);
+    PAL_setPalette(PAL1,numbersPal.data, DMA);
     JOY_setEventHandler(inputHandler);
     
     while(1)
