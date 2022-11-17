@@ -1,0 +1,1 @@
+IMAGE back1 "gfx/moonmap1.png" NONE

@@ -1,0 +1,1 @@
+SPRITE player_sprt "sprt/spriteplayer.png" 4 4 FAST 6
