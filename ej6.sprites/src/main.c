@@ -1,5 +1,7 @@
 /**
  * Example 6. Sprites
+ * 
+ * Add two Sprites and can control one of them, and using A or B button can change Sprites priorities.
  **/
 #include <genesis.h>
 
@@ -41,8 +43,10 @@ int main()
     index+=bg_b.tileset->numTile;
     VDP_drawImageEx(BG_A, &bg_a, TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,index),0,0,TRUE,CPU);
     index+=bg_a.tileset->numTile;
+    //Add first Sprite
     sha = SPR_addSprite(&shaSprt,sha_x,sha_y,TILE_ATTR(PAL2,TRUE,FALSE,FALSE));
     PAL_setPalette(PAL2,shaSprt.palette->data, DMA);
+    //Add Second Sprite
     elli = SPR_addSprite(&elliSprt,45, 155,TILE_ATTR(PAL3,FALSE,FALSE,FALSE));
     PAL_setPalette(PAL3,elliSprt.palette->data, DMA);
     SPR_setAnim(sha,SHA_STAY);

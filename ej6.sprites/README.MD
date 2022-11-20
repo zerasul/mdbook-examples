@@ -1,3 +1,3 @@
-# My Awesome Game
+# Example 6: Sprites
 
-This is My Awesome 16 Bit Cartridge game for mega Drive
+Example adding and controlling Sprites; press directions to move or A,B for change Sprites Priorities.
