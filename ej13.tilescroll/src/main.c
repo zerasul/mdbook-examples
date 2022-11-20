@@ -1,7 +1,7 @@
 /**
- * Hello World Example
- * Created With Genesis-Code extension for Visual Studio Code
- * Use "Genesis Code: Compile" command to compile this program.
+ * Example 13: Tile Scroll
+ * 
+ * Uses 2 Tile Column Scroll to generate Rain Efect.
  **/
 #include <genesis.h>
 
@@ -22,6 +22,7 @@ int main()
     ind+=rain.numTile;
     VDP_drawImageEx(BG_B,&city,TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),0,0,TRUE,CPU);
     ind+= city.tileset->numTile;
+    //Set Scroll Mode
     VDP_setScrollingMode(HSCROLL_PLANE,VSCROLL_2TILE);  
     
     s16 scrollVector[20];
@@ -36,6 +37,7 @@ int main()
         for(i=0;i<20;i++){
             scrollVector[i]-=2;
         }
+        //Set 2 Tile Scroll
         VDP_setVerticalScrollTile(BG_A,0,scrollVector,20,DMA);
         SYS_doVBlankProcess();
     }
