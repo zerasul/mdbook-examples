@@ -1,7 +1,7 @@
 /**
- * Hello World Example
- * Created With Genesis-Code extension for Visual Studio Code
- * Use "Genesis Code: Compile" command to compile this program.
+ * Example 12: Plane Scroll
+ * 
+ * Use of Plane Scroll to generate parallax Effect.
  **/
 #include <genesis.h>
 #include "gfx.h"
@@ -41,6 +41,7 @@ int main()
     player.elliSprt=SPR_addSprite(&elli,20,135,TILE_ATTR(PAL2,FALSE,FALSE,FALSE));
     SPR_setAnim(player.elliSprt,IDLE);
     PAL_setPalette(PAL2,elli.palette->data,CPU);
+    //Set scroll Mode
     VDP_setScrollingMode(HSCROLL_PLANE,VSCROLL_PLANE);
    
     while(1)
@@ -59,6 +60,7 @@ void inputHandle(){
 
     if(value & BUTTON_RIGHT){
         SPR_setAnim(player.elliSprt, RIGTH);
+        //If Player is moving
          if(player.x>220){
             xord=1;
         }else{
@@ -83,6 +85,7 @@ void inputHandle(){
 
 void updatePhisics(){
     SPR_setPosition(player.elliSprt,player.x,player.y);
+    //If player is moving and the count pixel is mover than 7 generates a new Tile
     if(xord>0){
         player.offset+=2;
         countpixel++;
@@ -90,9 +93,11 @@ void updatePhisics(){
     }
 
     if(player.offset>1023) player.offset=0;
+    //Generate a new Column at the end of the plane.
     if(countpixel==0){
         col_update=(((player.offset+320)>>3)&79);
         VDP_setMapEx(BG_A,map1.tilemap,TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,ind),col_update,0,col_update,0,1,28);
     }
+    //Set the Plane Scroll
     VDP_setHorizontalScroll(BG_A,-player.offset);
 }
