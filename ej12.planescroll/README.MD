@@ -1,3 +1,3 @@
-# My Awesome Game
+# Example 12: Plane Scroll
 
-This is My Awesome 16 Bit Cartridge game for mega Drive
+Use Plane Scroll to generate parallax effect.
