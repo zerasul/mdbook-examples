@@ -1,7 +1,7 @@
 /**
- * Hello World Example
- * Created With Genesis-Code extension for Visual Studio Code
- * Use "Genesis Code: Compile" command to compile this program.
+ * Example 17: KLogs
+ * 
+ * Uses of KLog Example
  **/
 #include <genesis.h>
 
