@@ -1,5 +1,7 @@
 /**
  * Example 4: Mouse Support
+ * 
+ * Show Mouse Information (you need an emulator with mouse support like Kega Fusion or a real Sega Mouse).
  **/
 #include <genesis.h>
 
@@ -40,7 +42,7 @@ int main()
 void read_mouse(){
     u16 readX;
     u16 readY;
-
+    //Only for mouse controller.
     if(status.portType == PORT_TYPE_MOUSE ){
         readX=JOY_readJoypadX(JOY_1);
         readY=JOY_readJoypadY(JOY_1);

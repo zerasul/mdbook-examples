@@ -26,10 +26,10 @@ void printChar(char * text, u16 tilex, u16 tiley){
 }
 
 void readInput(){
-
+    //Read Controller Pad 1
     int value = JOY_readJoypad(JOY_1);
 
-    
+    //Check Each button
     if (value & BUTTON_UP)
         printChar(UP_TEXT, POSX_UP, POSY_UP);
     else

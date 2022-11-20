@@ -1,5 +1,7 @@
 /**
  * Example 3: Asynchronous Controls
+ * 
+ * Uses and Input Handler Function when a button is Pressed
  **/
 #include <genesis.h>
 #include "constants.h"
@@ -10,7 +12,7 @@ void printChar(char*, u16, u16);
 int main()
 {
     JOY_init();
-
+	//Sets Input Event Handler
     JOY_setEventHandler(inputHandler);
 
     while(1)
