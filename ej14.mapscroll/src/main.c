@@ -1,7 +1,9 @@
 /**
- * Hello World Example
- * Created With Genesis-Code extension for Visual Studio Code
- * Use "Genesis Code: Compile" command to compile this program.
+ * Example 14: Plane Scroll Using Map
+ * 
+ * Create Plane Scroll using Map Struct.
+ * 
+ * NOTE: Needs SGDK 1.60 or later.
  **/
 #include <genesis.h>
 #include "gfx.h"
@@ -38,6 +40,7 @@ int main()
     ind+= sky.tileset->numTile;
     PAL_setPalette(PAL1,pltmap.data,DMA);
     VDP_loadTileSet(&map_tileset,ind,DMA);
+    //Create the Map
     map=MAP_create(&map1,BG_A,TILE_ATTR_FULL(PAL1,FALSE,FALSE,FALSE,ind));
 
     player.elliSprt=SPR_addSprite(&elli,20,135,TILE_ATTR(PAL2,FALSE,FALSE,FALSE));
@@ -84,5 +87,6 @@ void inputHandle(){
 void updatePhisics(){
     if(player.offset>320) player.offset=0;
     SPR_setPosition(player.elliSprt,player.x,player.y);
+    //Scroll
     MAP_scrollTo(map,player.offset,0);
 }
