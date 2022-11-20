@@ -1,5 +1,7 @@
 /**
  * Example 8: Highlight and Shadow
+ * 
+ * Show light and Shadow using priority and Shadow/highlight.
  **/
 #include <genesis.h>
 
@@ -46,6 +48,7 @@ int main()
     zera = SPR_addSprite(&zera_spr,zera_x,zera_y,TILE_ATTR(PAL1,FALSE,FALSE,FALSE));
     PAL_setPalette(PAL1,zera_spr.palette->data,DMA);
     SPR_setAnim(zera,ZERA_IDLE);
+    //Activate shadow/highlight
     VDP_setHilightShadow(1);
     while(1)
     {
@@ -67,6 +70,7 @@ void drawPriorityMap(Image * bg_map){
 
     u16 *shadow_tilemap = bg_map->tilemap->tilemap;
     u16 numTiles = MAXTILES;
+    //Generate a TileMap using priority Mask
     while(numTiles--){
         if(*shadow_tilemap){
             *priority_map_pointer |= TILE_ATTR_PRIORITY_MASK;
@@ -74,6 +78,7 @@ void drawPriorityMap(Image * bg_map){
         priority_map_pointer++;
         shadow_tilemap++;
     }
+    //Draw the TileMap using the generated Priority Map.
     VDP_setTileMapDataRectEx(BG_A,&tilemap_buff[0],0,
     0,0,MAP_WITH,MAP_HEIGHT,MAP_WITH,CPU);
 }
