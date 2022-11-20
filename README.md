@@ -20,6 +20,6 @@ In this repository you can find all the examples relates to the book "Homebrew D
 * [ej16.interrupts](ej16.interrupts/): VBlank Interrupt Example.
 * [ej17.klog](ej17.klog/): Klog Example.
 
-**NOTE:** In the folder [chapter11colorsImages](chaper11colorsImages/), you can find all the images in color for the chapter 11 about colors and palette.
+**NOTE:** In the folder [chapter11colorsImages](chapter11colorsImages/), you can find all the images in color for the chapter 11 about colors and palette.
 
 All the examples (unless otherwise indicated) in this repository have [MIT](LICENSE) license.
