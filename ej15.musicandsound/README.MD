@@ -1,3 +1,11 @@
-# My Awesome Game
+# Example 15: Music And Sound
 
-This is My Awesome 16 Bit Cartridge game for mega Drive
+Test Utility for testing Music and sound.
+
+* Press A or B to play Music.
+* Press left or right to select sound effect
+* Press C to play Sound Effect.
+* Press Start to Stop Music and Sound.
+
+NOTE: Thanks to Diego Escudero for the Melodies.
+
