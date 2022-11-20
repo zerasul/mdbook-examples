@@ -1,4 +1,4 @@
-# Example 17: Klong
+# Example 17: Klog
 
 Use of KLog example.
 
