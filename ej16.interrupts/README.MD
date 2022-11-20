@@ -1,3 +1,4 @@
-# My Awesome Game
+# Example 16: Use of VBlank Interrupt.
 
-This is My Awesome 16 Bit Cartridge game for mega Drive
+Uses VBLank Interrupt to refresh Sprites position, animation,etc.
+

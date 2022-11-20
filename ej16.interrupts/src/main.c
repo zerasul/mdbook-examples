@@ -1,7 +1,7 @@
 /**
- * Hello World Example
- * Created With Genesis-Code extension for Visual Studio Code
- * Use "Genesis Code: Compile" command to compile this program.
+ * Example 16: VBlank Interrupt
+ * 
+ * Uses VBlank Interrupt to update Sprite animation,position,etc.
  **/
 #include <genesis.h>
 #include "gfx.h"
@@ -39,6 +39,7 @@ int main()
     player.sprite = SPR_addSprite(&player_sprt,player.x,player.y,TILE_ATTR(PAL1,FALSE,FALSE,FALSE));
     
     SYS_enableInts();
+    //Set VBlank Interrupt function.
     SYS_setVBlankCallback(vblank_int_function);
 
     
