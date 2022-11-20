@@ -1,7 +1,7 @@
 /**
- * Hello World Example
- * Created With Genesis-Code extension for Visual Studio Code
- * Use "Genesis Code: Compile" command to compile this program.
+ * Example 10: TileMap generated Using Image File.
+ * 
+ * Generates a TileMap using an Image File (manual generation).
  **/
 #include <genesis.h>
 
@@ -19,6 +19,7 @@ int main()
     PAL_setPalette(PAL0,palbosque.data,CPU);
     int i,j;
 
+    //TIleMap Generation
     for (i = 0; i < 40; i++)
         {
         for (j = 0; j < 28; j++)
@@ -27,7 +28,7 @@ int main()
             tileMap1b[(i) + 40 * j]=TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, (ind-1) + map1[(i) + 40 * j]);
          }
     }
-    
+    //Draw each TileMap
     VDP_setTileMapDataRect(BG_A,tileMap1,0,0,40,28,40,CPU);
     VDP_setTileMapDataRect(BG_B,tileMap1b,0,0,40,28,40,CPU);
     
