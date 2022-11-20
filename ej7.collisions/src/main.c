@@ -1,5 +1,7 @@
 /**
  * Example 7. Collisions
+ * 
+ * Show Two Sprites with a Box collider and checks collisions.
  **/
 #include <genesis.h>
 
