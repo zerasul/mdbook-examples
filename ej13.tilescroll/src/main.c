@@ -23,7 +23,8 @@ int main()
     VDP_drawImageEx(BG_B,&city,TILE_ATTR_FULL(PAL0,FALSE,FALSE,FALSE,ind),0,0,TRUE,CPU);
     ind+= city.tileset->numTile;
     //Set Scroll Mode
-    VDP_setScrollingMode(HSCROLL_PLANE,VSCROLL_2TILE);  
+    //For versions prior to SGDK 1.90, use VSCROLL_2TILES
+    VDP_setScrollingMode(HSCROLL_PLANE,VSCROLL_COLUMN);  
     
     s16 scrollVector[20];
   
