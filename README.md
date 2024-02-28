@@ -17,6 +17,7 @@ In this repository you can find all the examples relates to the book "Homebrew D
 * [ej13.tilescroll](ej13.tilescroll/): Tiles Scroll Example.
 * [ej14.mapscroll](ej14.mapscroll/): Plane Scroll using Map structure.
 * [ej15.musicandsound](ej15.musicandsound/): Music and Sound Example.
+* [ej15b.xgm2](ej15b.xgm2/): Music and Sound Example using XGM2 Sound Driver (SGDK 2.00 or later needed).
 * [ej16.interrupts](ej16.interrupts/): VBlank Interrupt Example.
 * [ej17.klog](ej17.klog/): Klog Example.
 
