@@ -1,6 +1,6 @@
 # Homebrew Development for Sega Genesis/Mega Drive Examples
 
-In this repository you can find all the examples relates to the book "Homebrew Development for Sega Genesis"; in each folder you can find one example that relates to one of the chapters of the book. Each Example is created using the [SGDK](https://github.com/Stephane-D/SGDK) kit:
+In this repository you can find all the examples relates to the book "16 bits Homebrew Development"; in each folder you can find one example that relates to one of the chapters of the book. Each Example is created using the [SGDK](https://github.com/Stephane-D/SGDK) kit:
 
 * [ej1.helloworld](ej1.helloworld/): Hello World Example.
 * [ej2.controls1](ej2.controls1/): Controls 1 Example.
